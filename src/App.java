@@ -12,6 +12,9 @@ public class App {
        runIntTree();
        runBinaryTree();
        runEjercicios();
+
+       System.out.println("Ejercicio 2");
+       runEjercicio2();
     }
 
     private static void runEjercicios() {
@@ -22,15 +25,24 @@ public class App {
         System.out.println("Ejercicio1:");
         ejercicio1.insert(numeros);
 
-        Ejercicio2 ejercicio2 = new Ejercicio2();
-        int[] numeros2 = new int[]{5, 3, 7, 2, 4, 6, 8};
-        //BinaryTree<Integer>root=tree.getRoot();
-        ejercicio2.inverTree(null);
-
-        
-
-
     }
+   private static void runEjercicio2() {
+
+    int[] numeros = {5, 3, 7, 2, 4, 6, 8};
+    IntTree tree = new IntTree();
+
+    for (int numero : numeros) {
+        tree.add(numero);
+    }
+
+    Node<Integer> root = tree.getRoot();
+
+    Ejercicio2 ejercicio2 = new Ejercicio2();
+    ejercicio2.invertTree(root);
+    System.out.println("Arbol invertido");
+    ejercicio2.imprimirArbolInvertido(root);
+
+}
 
     private static void runBinaryTree() {
         BinaryTree<String> arbolString = new BinaryTree<>();

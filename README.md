@@ -1,7 +1,4 @@
-## Getting Started
-
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
+# EStructuras no lineales 
 ## Folder Structure
 
 The workspace contains two folders by default, where:
