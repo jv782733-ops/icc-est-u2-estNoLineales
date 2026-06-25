@@ -16,3 +16,176 @@
 
 ## Explicacion ejercicio 4
 - Este método calcula la longitud del camino más largo desde la raíz hasta la hoja q esta mas lejos. Y si el nodo que está comparando es nulo, devuelve 0. Si no es nulo, calcula por separado la profundidad que esta a la izquierdo y la de su lado derecho. Al final, usando Math.max(), compara ambos resultados, elige el camino que sea más largo y le suma 1 para obtener la altura total real.
+
+## MARKDOWN DE LOS CODIGOS DESARROLLADOS 
+### CODIGO DE EJERCICIO 1
+``` package trees;
+
+import structures.node.Node;
+
+public class Ejercicio1 {
+    public void insert(int[] numeros){
+        //Crear arbol de enteros
+        //Insertar cada numero
+        // imprimir el arbol
+
+        BinaryTree<Integer> tree = new BinaryTree<>();
+        for(int numero : numeros ){
+              tree.add(numero);
+            
+        }
+        printTree(tree.getRoot());
+
+        
+    }
+
+    private void printTree(Node<Integer> root) {
+       // System.out.println("imprimiendo el arbol");
+        printTreeRecursivo(root, 0);
+    }
+
+    private void printTreeRecursivo(Node<Integer> actual, int nivel) {
+       if(actual== null ) return;
+       printTreeRecursivo(actual.getRight(),nivel+1);
+
+       for(int  i=0 ; i< nivel;i++){
+       System.out.print("\t");
+       }
+       System.out.println(actual.getValue());
+       printTreeRecursivo(actual.getLeft(), nivel+1 );
+
+       
+    }
+
+} 
+```
+
+### CODIGO DE EJERCICIO 2
+
+``` package trees;
+
+
+
+import structures.node.Node;
+
+public class Ejercicio2 {
+
+    public static void invertTree(Node<Integer> actual) {
+        
+    if (actual == null) {
+            return;
+        }
+
+        System.out.println("Nodo actual: " + actual);
+
+       
+        Node<Integer> temp = actual.getLeft();
+
+        actual.setLeft(actual.getRight());
+        actual.setRight(temp);
+
+        invertTree(actual.getLeft());
+        invertTree(actual.getRight());
+
+
+    }
+    public static void imprimirArbolInvertido(Node<Integer> actual) {
+    imprimirInvertidoRecursivo(actual, 0);
+}
+
+    private static void imprimirInvertidoRecursivo(Node<Integer> actual, int nivel) {
+    if (actual == null) {
+        return;
+    }
+    imprimirInvertidoRecursivo(actual.getRight(), nivel + 1);
+
+    for (int i = 0; i < nivel; i++) {
+        System.out.print("    "); 
+    }
+    System.out.println(actual.getValue());
+
+    imprimirInvertidoRecursivo(actual.getLeft(), nivel + 1);
+}
+    
+}
+```
+### CODIGO DE EJERCICIO 3
+  ```package trees;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import structures.node.Node;
+public class Ejercicio3 {
+    public List<List<Node<Integer>>> listLevels(Node<Integer> root) {
+        
+        List<List<Node<Integer>>> resultado = new ArrayList<>();
+        
+        
+        if (root == null) {
+            return resultado;
+        }
+
+        
+        Queue<Node<Integer>> cola = new LinkedList<>();
+        cola.add(root);
+
+        while (!cola.isEmpty()) {
+          
+            int nodosEnNivel = cola.size();
+            List<Node<Integer>> nivelActual = new ArrayList<>();
+
+           
+            for (int i = 0; i < nodosEnNivel; i++) {
+                Node<Integer> nodoActual = cola.poll(); 
+                nivelActual.add(nodoActual);            
+
+                
+                if (nodoActual.getLeft() != null) {
+                    cola.add(nodoActual.getLeft());
+                }
+                
+                if (nodoActual.getRight() != null) {
+                    cola.add(nodoActual.getRight());
+                }
+            }
+
+            
+            resultado.add(nivelActual);
+        }
+
+        return resultado;
+    }
+}
+```
+
+### CODIGO DE EJERCICIO 4
+
+```package trees;
+
+import structures.node.Node;
+public class Ejercicio4 {
+    public int maxDepth(Node<Integer> root) {
+        
+        if (root == null) {
+            return 0;
+        }        
+        int depthIzquierdo = maxDepth(root.getLeft());
+        int depthDerecho = maxDepth(root.getRight());
+        return Math.max(depthIzquierdo, depthDerecho) + 1;
+    }
+}
+```
+## Salida de consola 
+### salida de consola 1
+![alt text](image-1.png)
+### salida de consola 2
+![alt text](image-2.png)
+### salida de consola 3
+![alt text](image-3.png)
+### salida de consola 4
+![alt text](image-4.png)
+
+## URL repositorio 
+https://github.com/jv782733-ops/icc-est-u2-estNoLineales.git
