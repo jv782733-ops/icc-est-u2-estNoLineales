@@ -1,10 +1,13 @@
 import java.util.LinkedList;
+import java.util.List;
 
 import models.Persona;
 import structures.node.Node;
 import trees.BinaryTree;
 import trees.Ejercicio1;
 import trees.Ejercicio2;
+import trees.Ejercicio3;
+import trees.Ejercicio4;
 import trees.IntTree;
 
 public class App {
@@ -12,21 +15,22 @@ public class App {
        runIntTree();
        runBinaryTree();
        runEjercicios();
-
-       System.out.println("Ejercicio 2");
        runEjercicio2();
+       runEjercicio3();
+       runEjercicio4();
     }
 
     private static void runEjercicios() {
         Ejercicio1  ejercicio1 = new Ejercicio1();
         int[] numeros = new int[]{5, 3, 7, 2, 4, 6, 8};
-        //ejercicio1.insert(numeros);
+       
 
         System.out.println("Ejercicio1:");
         ejercicio1.insert(numeros);
 
     }
    private static void runEjercicio2() {
+    System.out.println("Ejercicio 2");
 
     int[] numeros = {5, 3, 7, 2, 4, 6, 8};
     IntTree tree = new IntTree();
@@ -42,6 +46,55 @@ public class App {
     System.out.println("Arbol invertido");
     ejercicio2.imprimirArbolInvertido(root);
 
+}
+private static void runEjercicio3() {
+    System.out.println("\nEjercicio 3");
+    
+    int[] numeros = {4, 2, 7, 1, 3, 6, 9};
+    IntTree tree = new IntTree();
+    for (int numero : numeros) {
+        tree.add(numero);
+    }
+
+    Node<Integer> root = tree.getRoot();
+    
+    Ejercicio3 ejecutor = new Ejercicio3();
+    List<List<Node<Integer>>> niveles = ejecutor.listLevels(root);
+
+    for (List<Node<Integer>> nivel : niveles) {
+        for (int i = 0; i < nivel.size(); i++) {
+            System.out.print(nivel.get(i).getValue());
+            if (i < nivel.size() - 1) {
+                System.out.print(" -> ");
+            }
+        }
+        System.out.println(); 
+    }
+}
+private static void runEjercicio4() {
+    System.out.println("\n Ejercicio 4");
+
+   
+    Node<Integer> nodo4 = new Node<>(4);
+    Node<Integer> nodo2 = new Node<>(2);
+    Node<Integer> nodo7 = new Node<>(7);
+    Node<Integer> nodo1 = new Node<>(1);
+    Node<Integer> nodo3 = new Node<>(3);
+    Node<Integer> nodo8 = new Node<>(8);
+
+    
+    nodo4.setLeft(nodo2);
+    nodo4.setRight(nodo7);
+
+    nodo2.setLeft(nodo1);
+    nodo2.setRight(nodo3);
+
+    nodo1.setLeft(nodo8); 
+
+    Ejercicio4 ejecutor = new Ejercicio4();
+    int profundidadMaxima = ejecutor.maxDepth(nodo4);
+
+    System.out.println("Output: " + profundidadMaxima);
 }
 
     private static void runBinaryTree() {
