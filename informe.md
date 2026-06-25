@@ -181,3 +181,11 @@ public class Ejercicio4 {
 ### salida de consola 1
 ![alt text](image-1.png)
 ### salida de consola 2
+![alt text](image-2.png)
+### salida de consola 3
+![alt text](image-3.png)
+### salida de consola 4
+![alt text](image-4.png)
+
+## URL repositorio 
+https://github.com/jv782733-ops/icc-est-u2-estNoLineales.git
