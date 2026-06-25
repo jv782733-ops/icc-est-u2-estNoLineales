@@ -28,9 +28,7 @@ public class Persona implements Comparable<Persona>{
     public int compareTo(Persona otra) {
         int compEdad = Integer.compare(this.edad, otra.getEdad());
         return compEdad;
-//corregir esto ->
-       // int comNombre = this.nombre.compareTo(otra.getNombre());
-        //return comNombre;
+
     }
 
     
