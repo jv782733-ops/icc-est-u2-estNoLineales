@@ -1,7 +1,11 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
+import java.util.Set;
+import collections.set.Sets;
+import collections.set.maps.Maps;
 import models.Persona;
+import models.contacto;
 import structures.node.Node;
 import trees.BinaryTree;
 import trees.Ejercicio1;
@@ -18,8 +22,91 @@ public class App {
        runEjercicio2();
        runEjercicio3();
        runEjercicio4();
+       runSets();
+       runLinkedHashSet();
+       runTreeSet();
+       runMaps();
+       runFiltrarContactos();
+       
+       
     }
 
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private static void runFiltrarContactos() {
+    System.out.println("\n Filtrar y Ordenar Contactos Únicos: ");
+
+    List<contacto> listaContactos = new ArrayList<>();
+    listaContactos.add(new contacto("Juan", "Perez", "123456"));
+    listaContactos.add(new contacto("Ana", "Gomez", "789101"));
+    listaContactos.add(new contacto("Pedro", "Alvarez", "111213"));
+    listaContactos.add(new contacto("Juan", "Rodriguez", "141516")); // Mismo nombre "Juan" que el primero
+
+   
+    Maps maps = new Maps();
+
+    Set<contacto> contactosFiltrados = maps.filtrarOrdenarUnicos(listaContactos);
+
+    for (contacto c : contactosFiltrados) {
+        System.out.println(c.getNombre() + " " + c.getApellido() + " - " + c.getTelefono());
+    }
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private static void runMaps() {
+    System.out.println("\n Mapas: ");
+    
+    Maps maps = new Maps();
+    
+    maps.construirHashMap();
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private static void runSets(){
+        Sets sets = new Sets();
+
+        //Implementacion -> HashCode
+        System.out.println("* HashCode: ");
+        Set<String> hashSet = sets.construirHashSet();
+        System.err.println(hashSet);
+        System.err.println("Size =" + hashSet.size());
+        System.err.println(hashSet.contains("F"));
+
+    }
+    private static void runLinkedHashSet(){
+        Sets sets = new Sets();
+        System.out.println("* LinkedHashSet: ");
+        Set<String> hashSet = sets.construirLinkedHashSet();
+        System.err.println(hashSet);
+        System.err.println("Size =" + hashSet.size());
+        System.err.println(hashSet.contains("F"));
+
+        
+    }
+
+     private static void runTreeSet(){
+        Sets sets = new Sets();
+        System.out.println("* TreeSet: ");
+        Set<String> hashSet = sets.construirTreeSet();
+        System.err.println(hashSet);
+        System.err.println("Size =" + hashSet.size());
+        System.err.println(hashSet.contains("F"));
+
+        
+    }
+
+    private static void contruirHashSetContacto(){
+        Sets sets = new Sets();
+
+        
+        System.out.println("* contruirHashSetContacto: ");
+        Set<contacto> hashSet = sets.construirHashSetContacto();
+        System.err.println(hashSet);
+        System.err.println("Size =" + hashSet.size());
+
+
+        
+    }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static void runEjercicios() {
         Ejercicio1  ejercicio1 = new Ejercicio1();
         int[] numeros = new int[]{5, 3, 7, 2, 4, 6, 8};
@@ -97,6 +184,8 @@ private static void runEjercicio4() {
     System.out.println("Output: " + profundidadMaxima);
 }
 
+
+
     private static void runBinaryTree() {
         BinaryTree<String> arbolString = new BinaryTree<>();
         BinaryTree<Persona> arbolPersonas = new BinaryTree<>();
@@ -106,6 +195,7 @@ private static void runEjercicio4() {
         arbolPersonas.add(new Persona("Maria", 28));
         System.out.println("Personas");
         arbolPersonas.inOrden();
+        
         
 
         
